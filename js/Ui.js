@@ -8,15 +8,27 @@ const ui = (function() {
         searchLocationForm.addEventListener("submit", async (event) => {
             event.preventDefault();
     
-            const weatherData = await weather.getCurrentWeatherData(searchLocation.value);
-            console.log(weatherData);
+            const currentWeatherData = await weather.getCurrentWeatherData(searchLocation.value);
+            display(currentWeatherData);
         });
-    }
+    }   
     
-    function display() {
-        const mainContainer = document.getElementById("main-container");
-    
-        // mainContainer.appendChild()
+    function display(currentWeatherData) {
+        const currentConditions = currentWeatherData.currentConditions;
+
+        const weatherDataContainer = document.getElementById("weather-data-container");
+        const resolvedAddress = document.createElement("h3");
+        const temperature = document.createElement("h1");
+        const conditions = document.createElement("h3");
+
+        resolvedAddress.textContent = currentWeatherData.resolvedAddress;
+        temperature.textContent = currentConditions.temp;
+        conditions.textContent = currentConditions.conditions;
+
+        weatherDataContainer.textContent = "";
+        weatherDataContainer.appendChild(resolvedAddress);
+        weatherDataContainer.appendChild(temperature);
+        weatherDataContainer.appendChild(conditions);
     }
 
     return { initialiseEventListeners, display }

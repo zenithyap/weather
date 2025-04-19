@@ -14,14 +14,8 @@ const weather = (function () {
             throw error;
         }
     }
-    
-    async function getCurrentTemperature(location) {
-        const weatherData = await getCurrentWeatherData(location);
-    
-        return weatherData.currentConditions.temp;
-    }
 
-    return { getCurrentWeatherData, getCurrentTemperature }
+    return { getCurrentWeatherData }
 })()
 
 export default weather;
