@@ -2,7 +2,7 @@ async function getCurrentWeatherData(location) {
     try {
         const response = await fetch(`https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${location}?unitGroup=metric&include=current&key=GPU2AG4LTAD3J9S76K7HJK2JU&contentType=json`);
 
-        if (!repsonse.ok) {
+        if (!response.ok) {
             throw new Error(`HTTP error! status ${response.status}`);
         }
 
