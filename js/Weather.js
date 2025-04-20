@@ -15,7 +15,13 @@ const weather = (function () {
         }
     }
 
-    return { getCurrentWeatherData }
+    async function getIcon(condition) {
+        const icon = await import(`../imgs/${condition}.svg`);
+        
+        return icon;
+    }
+
+    return { getCurrentWeatherData, getIcon }
 })()
 
 export default weather;
