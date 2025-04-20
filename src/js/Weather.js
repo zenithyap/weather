@@ -11,7 +11,7 @@ const weather = (function () {
             return json;
         } catch(error) {
             console.log(error);
-            throw error;
+            return { error: true, message: error.message };
         }
     }
 
