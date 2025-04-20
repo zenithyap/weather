@@ -17,8 +17,7 @@ const weather = (function () {
 
     async function getIcon(condition) {
         const icon = await import(`../imgs/${condition}.svg`);
-        
-        return icon;
+        return icon.default;
     }
 
     return { getCurrentWeatherData, getIcon }

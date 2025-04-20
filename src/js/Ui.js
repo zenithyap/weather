@@ -11,7 +11,6 @@ const ui = (function() {
             const currentWeatherData = await weather.getCurrentWeatherData(searchLocation.value);
             const iconSvg = await weather.getIcon(currentWeatherData.currentConditions.icon);
             display(currentWeatherData, iconSvg);
-            console.log(currentWeatherData);
         });
     }   
     
@@ -22,12 +21,12 @@ const ui = (function() {
         const resolvedAddress = document.createElement("h3");
         const temperature = document.createElement("h1");
         const conditions = document.createElement("h3");
-        const icon = document.createElement("img");
+        const icon = document.createElement("div");
 
         resolvedAddress.textContent = currentWeatherData.resolvedAddress;
         temperature.textContent = currentConditions.temp;
         conditions.textContent = currentConditions.conditions;
-        icon.src = iconSvg;
+        icon.innerHTML = iconSvg;
 
         weatherDataContainer.textContent = "";
         weatherDataContainer.appendChild(resolvedAddress);
