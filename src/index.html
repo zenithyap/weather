@@ -6,13 +6,16 @@
     <title>Weather</title>
 </head>
 <body>
-    <div id="main-container">
-        <form id="search-location-form">
-            <input type="text" id="search-location">
-            <button type="submit">Search</button>
-        </form>
-        <p id="error-message"></p>
-        <div id="weather-data-container"></div>
+    <div id="header">
+        <h1>Weather</h1>
+        <div id="search-container">
+            <form id="search-location-form">
+                <input type="text" id="search-location" placeholder="Search Country">
+                <button type="submit">Search</button>
+            </form>
+            <p id="error-message"></p>
+        </div>
     </div>
+    <div id="weather-data-container"></div>
 </body>
 </html>

@@ -16,6 +16,7 @@ const ui = (function() {
     async function display(currentWeatherData) {
         const errorMessage = document.getElementById("error-message");
         const weatherDataContainer = document.getElementById("weather-data-container");
+        weatherDataContainer.classList = "weather-data-container";
         weatherDataContainer.textContent = "";
 
         if (!currentWeatherData.error) {
@@ -23,14 +24,19 @@ const ui = (function() {
             const iconSvg = await weather.getIcon(currentWeatherData.currentConditions.icon);
 
             const resolvedAddress = document.createElement("h3");
-            const temperature = document.createElement("h1");
+            const temperature = document.createElement("h3");
             const conditions = document.createElement("h3");
             const icon = document.createElement("div");
     
             resolvedAddress.textContent = currentWeatherData.resolvedAddress;
-            temperature.textContent = currentConditions.temp;
+            temperature.textContent = currentConditions.temp + "°C";
             conditions.textContent = currentConditions.conditions;
             icon.innerHTML = iconSvg;
+
+            resolvedAddress.className = "resolved-address";
+            temperature.className = "temperature";
+            conditions.className = "conditions";
+            icon.className = "icon";
     
             weatherDataContainer.appendChild(resolvedAddress);
             weatherDataContainer.appendChild(temperature);

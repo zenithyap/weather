@@ -3,3 +3,66 @@
     padding: 0;
     box-sizing: border-box;
 }
+
+body {
+    font-family: 'Times New Roman', serif;
+}
+
+input, button {
+    font-size: inherit;
+}
+
+#header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 100px;
+    padding: 48px;
+}
+
+#search-location-form {
+    input, 
+    button {
+        border: 2px solid grey;
+        outline: none;
+        border-radius: 12px;
+    }
+
+    input {
+        padding: 6px 24px;
+    }
+
+    button {
+        background: none;
+        padding: 6px;
+    }
+
+    button:hover {
+        background-color: #b6b6b6;
+    }
+}
+
+#weather-data-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    .resolved-address,
+    .conditions {
+        font-size: 24px;
+    }
+
+    .temperature {
+        font-size: 96px;
+    }
+
+    .icon {
+        height: 100px;
+        width: 100px;
+    }
+}
