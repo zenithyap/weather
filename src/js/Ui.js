@@ -1,23 +1,36 @@
 import weather from "./Weather.js";
 
 const ui = (function() {
+    function showLoader() {
+        const loader = document.getElementById("loader");
+        loader.style.display = "block";
+    }
+
+    function hideLoader() {
+        const loader = document.getElementById("loader");
+        loader.style.display = "none";
+    }
+
     function initialiseEventListeners() {
         const searchLocationForm = document.getElementById("search-location-form");
-        const searchLocation = document.getElementById("search-location");
     
         searchLocationForm.addEventListener("submit", async (event) => {
             event.preventDefault();
-    
-            const currentWeatherData = await weather.getCurrentWeatherData(searchLocation.value);
-            display(currentWeatherData);
+
+            display();
         });
     }   
     
-    async function display(currentWeatherData) {
+    async function display() {
         const errorMessage = document.getElementById("error-message");
+        const searchLocation = document.getElementById("search-location");
         const weatherDataContainer = document.getElementById("weather-data-container");
         weatherDataContainer.classList = "weather-data-container";
         weatherDataContainer.textContent = "";
+
+        showLoader();
+        const currentWeatherData = await weather.getCurrentWeatherData(searchLocation.value);
+        hideLoader();
 
         if (!currentWeatherData.error) {
             const currentConditions = currentWeatherData.currentConditions;
